@@ -1,0 +1,61 @@
+@mixin gradient($mode, $start, $end) {
+ @if $mode == "" {
+  $mode: "linear";
+ }
+ background: {
+  color: $end;
+  image: -moz-#{$mode}-gradient(top, $start, $end); //FF3.6
+  image: -ms-#{$mode}-gradient(top, $start, $end); //IE10
+  image: -o-#{$mode}-gradient(top, $start, $end); //Opera 11.10+
+  image: -webkit-gradient(#{$mode}, left top, left bottom, from($start), to($end)); //Saf4+, Chrome
+  image: -webkit-#{$mode}-gradient(top, $start, $end); //Chrome 10+, Saf5.1+
+  image: #{$mode}-gradient(top, $start, $end);
+ }
+ filter: progid:DXImageTransform.Microsoft.gradient(enabled='false', startColorStr='#{ie-hex-str($start)}', endColorStr='#{ie-hex-str($end)}'); //IE6-IE9
+}
+
+@mixin border-radius($radius) {
+     -moz-border-radius: $radius; //FF1+
+  -webkit-border-radius: $radius; //Saf3-4, iOS 1+, Android 1.5+
+          border-radius: $radius; //Opera 10.5, IE9, Saf5, Chrome, FF4
+}
+
+@mixin popup($selector, $text) {
+ #{$selector} span{
+  &:before {
+   content: $text;
+  }
+  &:after {
+   content: "there";
+  }
+ }
+}
+
+
+
+
+////////////////////////////////////////
+/*
+@mixin gradient($start, $end) {
+ background: {
+  color: $end;
+  image: -moz-linear-gradient(top, $start, $end); //FF3.6
+  image: -ms-linear-gradient(top, $start, $end); //IE10
+  image: -o-linear-gradient(top, $start, $end); //Opera 11.10+
+  image: -webkit-gradient(linear, left top, left bottom, from($start), to($end)); //Saf4+, Chrome
+  image: -webkit-linear-gradient(top, $start, $end); //Chrome 10+, Saf5.1+
+  image: linear-gradient(top, $start, $end);
+ }
+}
+
+@mixin gradient-old($start, $end) {
+ background-color: $end;
+ background-image: -moz-linear-gradient(top, $start, $end); //FF3.6
+ background-image: -ms-linear-gradient(top, $start, $end); //IE10
+ background-image: -o-linear-gradient(top, $start, $end); //Opera 11.10+
+ background-image: -webkit-gradient(linear, left top, left bottom, from($start), to($end)); //Saf4+, Chrome
+ background-image: -webkit-linear-gradient(top, $start, $end); //Chrome 10+, Saf5.1+
+ background-image: linear-gradient(top, $start, $end);
+         //filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$start', EndColorStr='$end'); //IE6-IE9
+}
+*/

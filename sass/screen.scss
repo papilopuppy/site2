@@ -1,0 +1,65 @@
+@import "compass/reset";
+@import "_vars";
+@import "_mixins";
+
+header nav {
+ ul {
+
+  @include gradient("", $gradient-start, $gradient-end);
+
+  li {
+   display: inline-block;
+   padding: 5px 0;
+  }
+
+  li a {
+   color: $baby-blue;
+   &:hover { color: darken($baby-blue, 10%); }
+   //&:last-child { border: 1px solid #ccc; }
+  }
+ }
+}
+
+section.wrapper {
+ margin: 10px 0;
+ width: $wrapper-width;
+
+ div {
+  @include gradient("", #EEEEEE, #FFFFFF);
+
+  &.left-nav { float: left; width: $wrapper-width * 0.1; }
+  &.right-nav { float: right; width: $wrapper-width * 0.2; }
+ }
+}
+
+.butt {
+ color: red;
+ text-decoration: none;
+ &:hover { color: darken(darksalmon, 10%); }
+ padding: 5px 7px;
+ border: 1px solid darken(darksalmon, 10%);
+ @include border-radius(5px);
+ @include gradient("", lighten(darksalmon, 30%), lighten(darksalmon, 0%));
+}
+
+.butt2 {
+ @extend .butt;
+ color: desaturate(red, 50%);
+}
+
+.popup {
+ $w: 200px;
+ $h: 100px;
+ position: absolute;
+ width: $w;
+ height: $h;
+ top: 100px;
+ left: $wrapper-width / 2 - $w / 2;
+ border: 1px solid darken(blanchedalmond, 10%);
+ @include border-radius(5px);
+ @include gradient("", blanchedalmond, lighten(blanchedalmond, 10%));
+}
+
+//td:
+
+@include popup(".popup", "Hi!");
